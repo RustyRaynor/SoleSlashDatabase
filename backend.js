@@ -18,9 +18,11 @@ router.get('/addnew/:username', (req, res) => {
     const newData = new data({username: req.params.username, wins: 0})
 
     newData.save().then(succ => {
+        res.send("New Data")
         console.log(succ)
         console.log('Saved')
     }).catch(err => {
+        res.send("Did not work")
         console.log(err)
     })
 })
