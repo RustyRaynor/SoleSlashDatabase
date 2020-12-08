@@ -37,7 +37,7 @@ router.get('/addwins/:username', (req, res) => {
 
     data.findOne({username: req.params.username}).lean().then(succ =>{
 
-        data.updateOne({username: req.params.username}, {wins: succ.wins++}).then(succ2 => {
+        data.updateOne({username: req.params.username}, {wins: succ.wins + 1}).then(succ2 => {
             console.log('Changed')
         }).catch(err2 => {
             console.log(err2)
