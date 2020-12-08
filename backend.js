@@ -7,6 +7,10 @@ import data from './data.js'
 const app = express()
 const router = express.Router()
 
+router.get('/', (req, res) => {
+    res.send("Hello")
+})
+
 router.get('/addnew/:username', (req, res) => {
     
     const newData = new data({username: req.params.username, wins: 0})
