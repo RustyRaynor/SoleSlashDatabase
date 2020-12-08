@@ -51,7 +51,7 @@ router.get('/addwins/:username', (req, res) => {
     })
 })
 
-app.use('', router)
+app.use('/', router)
 
 app.listen(process.env.PORT, () => {
     console.log("Hey");
