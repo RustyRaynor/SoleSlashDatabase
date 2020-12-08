@@ -7,6 +7,8 @@ import data from './data.js'
 const app = express()
 const router = express.Router()
 
+connect()
+
 router.get('/', (req, res) => {
     res.send("Hello!")
 })
@@ -48,8 +50,6 @@ router.get('/addwins/:username', (req, res) => {
         console.log(err)
     })
 })
-
-connect()
 
 app.use('', router)
 
