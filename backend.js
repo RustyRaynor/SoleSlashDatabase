@@ -55,6 +55,16 @@ router.get('/addwins/:username', (req, res) => {
     })
 })
 
+router.get('/getallinformation', (req, res) => {
+    data.find().lean().then(succ => {
+        res.send(succ)
+    }).catch(err => {
+        res.send("Could not get")
+        console.log(err2)
+    })
+  
+})
+
 app.use('/', router)
 
 app.listen(process.env.PORT, () => {
