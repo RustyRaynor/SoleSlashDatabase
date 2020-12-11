@@ -42,9 +42,11 @@ router.get('/addwins/:username', (req, res) => {
     data.findOne({username: req.params.username}).lean().then(succ =>{
 
         data.updateOne({username: req.params.username}, {wins: succ.wins + 1}).then(succ2 => {
+            res.send("Added")
             console.log('Changed')
         }).catch(err2 => {
             console.log(err2)
+            res.send("Failed to add")
             console.log('Did not Change')
         })
         
