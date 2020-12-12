@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
 })
 
 router.get('/addnew/:username', (req, res) => {
-    
-    const newData = new data({username: req.params.username, wins: 0})
+
+    const newData = new data({ username: req.params.username, wins: 0 })
 
     newData.save().then(succ => {
         res.send("New Data")
@@ -29,7 +29,7 @@ router.get('/addnew/:username', (req, res) => {
 
 router.get('/getfromusername/:username', (req, res) => {
 
-    data.findOne({username: req.params.username}).lean().then(succ =>{
+    data.findOne({ username: req.params.username }).lean().then(succ => {
         res.send(succ)
         console.log('success')
     }).catch(err => {
@@ -39,9 +39,9 @@ router.get('/getfromusername/:username', (req, res) => {
 
 router.get('/addwins/:username', (req, res) => {
 
-    data.findOne({username: req.params.username}).lean().then(succ =>{
+    data.findOne({ username: req.params.username }).lean().then(succ => {
 
-        data.updateOne({username: req.params.username}, {wins: succ.wins + 1}).then(succ2 => {
+        data.updateOne({ username: req.params.username }, { wins: succ.wins + 1 }).then(succ2 => {
             res.send("Added")
             console.log('Changed')
         }).catch(err2 => {
@@ -49,7 +49,7 @@ router.get('/addwins/:username', (req, res) => {
             res.send("Failed to add")
             console.log('Did not Change')
         })
-        
+
     }).catch(err => {
         console.log(err)
     })
@@ -57,12 +57,12 @@ router.get('/addwins/:username', (req, res) => {
 
 router.get('/getallinformation', (req, res) => {
     data.find().lean().then(succ => {
-        res.send(succ)
+        res.send({ data: succ })
     }).catch(err => {
         res.send("Could not get")
         console.log(err2)
     })
-  
+
 })
 
 app.use('/', router)
